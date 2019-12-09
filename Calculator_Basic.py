@@ -3,8 +3,8 @@ from colors import *
 # creating main object
 root = Tk()
 # For validation
-numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-symbols = ['+', '-', '*', '**', '/', '//']
+numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e']
+oprator = ['+', '-', '*', '**', '/', '//', '.', '(', ')']
 calculation = False
 screen_value = StringVar()
 string = "0"
@@ -16,7 +16,7 @@ def get_value():
     string = ""
     values = screen.get()
     for value in values:
-        if value in numbers or value in symbols:
+        if value in numbers or value in oprator:
             string = string + value
     if values == '0':
         string = ""
@@ -38,9 +38,9 @@ def number_btn(num):
 
 
 # Function to enter symbol by button
-def symbol_btn(symbo):
+def oprator_btn(oprator):
     string = get_value()
-    string = string + num
+    string = string + oprator
     screen_value.set(string)
 
 
@@ -103,7 +103,7 @@ button3 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: number_btn("/")
+                 command=lambda: oprator_btn("/")
                  )
 
 button4 = Button(root,
@@ -117,7 +117,7 @@ button4 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: number_btn("*")
+                 command=lambda: oprator_btn("*")
                  )
 
 button5 = Button(root,
@@ -173,7 +173,7 @@ button8 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: number_btn("-")
+                 command=lambda: oprator_btn("-")
                  )
 
 button9 = Button(root,
@@ -229,7 +229,7 @@ button12 = Button(root,
                   activeforeground=symbol_font,
                   padx=50,
                   pady=10,
-                  command=lambda: number_btn("+")
+                  command=lambda: oprator_btn("+")
                   )
 
 button13 = Button(root,
