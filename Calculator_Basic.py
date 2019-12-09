@@ -10,31 +10,19 @@ string = ""
 
 
 def calculate():
-    global string, calculation
-    calculation = True
-    number = string
-    string = eval(number)
-    screen_value.set(string)
+    string = screen.get()
+    result = eval(string)
+    screen_value.set(result)
 
 
 def number_btn(num):
-    global string, calculation
-    num = str(num)
+    string = screen.get()
     string = string + num
-    calculation = False
     screen_value.set(string)
-
-
-def symbol_btn(data):
-    global string, calculation
-    calculation = False
 
 
 def clear_btn():
-    global string
-    string = ""
-    screen.delete(0, END)
-    screen_value.set(string)
+    screen_value.set("")
 
 
 # Window behaviour
@@ -79,7 +67,7 @@ button2 = Button(root,
                  activeforeground=text,
                  padx=38,
                  pady=10,
-                 command=lambda: number_btn("M+")
+                 command=mplus
                  )
 
 button3 = Button(root,
