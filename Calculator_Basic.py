@@ -3,21 +3,18 @@ from colors import *
 # creating main object
 root = Tk()
 # For validation
-accept = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/', '%', '//', '^', '**']
+accept = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/']
 calculation = False
 screen_value = StringVar()
 string = ""
 
 
 def calculate():
-    number = screen_value.get()
     global string, calculation
-    number = str(number)
-    for i in number:
-        if i in accept:
-            string = i + string
-    string = eval(string)
     calculation = True
+    number = string
+    string = eval(number)
+    screen_value.set(string)
 
 
 def number_btn(num):
@@ -96,7 +93,7 @@ button3 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: number_btn("÷")
+                 command=lambda: number_btn("/")
                  )
 
 button4 = Button(root,
@@ -110,7 +107,7 @@ button4 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: number_btn("×")
+                 command=lambda: number_btn("*")
                  )
 
 button5 = Button(root,
@@ -278,7 +275,7 @@ button16 = Button(root,
                   activeforeground=text,
                   padx=50,
                   pady=10,
-                  command=lambda: number_btn("=")
+                  command=calculate
                   )
 
 button17 = Button(root,
