@@ -3,26 +3,50 @@ from colors import *
 # creating main object
 root = Tk()
 # For validation
-accept = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/']
+numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+symbols = ['+', '-', '*', '**', '/', '//']
 calculation = False
 screen_value = StringVar()
-string = ""
+string = "0"
+screen_value.set(string)
 
 
+# Function for velidation 1234
+def get_value():
+    string = ""
+    values = screen.get()
+    for value in values:
+        if value in numbers or value in symbols:
+            string = string + value
+    if values == '0':
+        string = ""
+    return string
+
+
+# Function to do calculation
 def calculate():
-    string = screen.get()
+    string = get_value()
     result = eval(string)
     screen_value.set(result)
 
 
+# Function to enter number by button
 def number_btn(num):
-    string = screen.get()
+    string = get_value()
     string = string + num
     screen_value.set(string)
 
 
+# Function to enter symbol by button
+def symbol_btn(symbo):
+    string = get_value()
+    string = string + num
+    screen_value.set(string)
+
+
+# Function to clear window by button
 def clear_btn():
-    screen_value.set("")
+    screen_value.set("0")
 
 
 # Window behaviour
