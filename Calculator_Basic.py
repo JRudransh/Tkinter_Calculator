@@ -52,8 +52,7 @@ button1 = Button(root,
                  activebackground=button_top_active,
                  activeforeground=text,
                  padx=38,
-                 pady=10,
-                 command=lambda: number_btn("MC")
+                 pady=10
                  )
 
 button2 = Button(root,
@@ -66,8 +65,7 @@ button2 = Button(root,
                  activebackground=button_top_active,
                  activeforeground=text,
                  padx=38,
-                 pady=10,
-                 command=mplus
+                 pady=10
                  )
 
 button3 = Button(root,
