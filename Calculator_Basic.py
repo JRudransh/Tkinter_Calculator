@@ -67,15 +67,18 @@ def key(event):
             string = new
     elif my_input == 36:
         # Calculate the result when enter key is pressed
-        string = get_value()
         result = eval(string)
         string = str(result)
-    elif kp[1] in numbers_list or kp[1] in operator_list:
+    if kp[1] in numbers_list or kp[1] in operator_list:
         num = kp[1]
     else:
-        num = "0"  # The Bug was here
+        num = ''
     string = string + num
     screen_value.set(string)
+    # To handle the bug
+    string = get_value()
+    if string == "":
+        screen_value.set("0")
 
 
 # Window behaviour
