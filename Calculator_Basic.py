@@ -3,20 +3,20 @@ from colors import *
 # creating main object
 root = Tk()
 # For validation
-numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e']
-oprator = ['+', '-', '*', '**', '/', '//', '.', '(', ')']
+numbers_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e']
+operator_list = ['+', '-', '*', '**', '/', '//', '.', '(', ')']
 calculation = False
 screen_value = StringVar()
-string = "0"
-screen_value.set(string)
+string_fill = "0"
+screen_value.set(string_fill)
 
 
-# Function for velidation 1234
+# Function for validation 1234
 def get_value():
     string = ""
     values = screen.get()
     for value in values:
-        if value in numbers or value in oprator:
+        if value in numbers_list or value in operator_list:
             string = string + value
     if values == '0':
         string = ""
@@ -38,9 +38,9 @@ def number_btn(num):
 
 
 # Function to enter symbol by button
-def oprator_btn(oprator):
+def operator_btn(operator):
     string = get_value()
-    string = string + oprator
+    string = string + operator
     screen_value.set(string)
 
 
@@ -103,7 +103,7 @@ button3 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: oprator_btn("/")
+                 command=lambda: operator_btn("/")
                  )
 
 button4 = Button(root,
@@ -117,7 +117,7 @@ button4 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: oprator_btn("*")
+                 command=lambda: operator_btn("*")
                  )
 
 button5 = Button(root,
@@ -173,7 +173,7 @@ button8 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: oprator_btn("-")
+                 command=lambda: operator_btn("-")
                  )
 
 button9 = Button(root,
@@ -229,7 +229,7 @@ button12 = Button(root,
                   activeforeground=symbol_font,
                   padx=50,
                   pady=10,
-                  command=lambda: oprator_btn("+")
+                  command=lambda: operator_btn("+")
                   )
 
 button13 = Button(root,
