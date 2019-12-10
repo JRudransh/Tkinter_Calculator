@@ -5,7 +5,9 @@ root = Tk()
 # For validation
 numbers_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e']
 operator_list = ['+', '-', '*', '**', '/', '//', '.', '(', ')']
-calculation = False
+get_operator = False
+get_number = False
+get_point = False
 screen_value = StringVar()
 string_fill = "0"
 screen_value.set(string_fill)
@@ -26,7 +28,10 @@ def get_value():
 # Function to do calculation
 def calculate():
     string = get_value()
-    result = eval(string)
+    try:
+        result = eval(string)
+    except:
+        result = string
     screen_value.set(result)
 
 
@@ -35,6 +40,16 @@ def number_btn(num):
     string = get_value()
     string = string + num
     screen_value.set(string)
+    get_number = True
+
+
+# Function to enter number by button
+def point_btn():
+    string = get_value()
+    btn_value = '.'
+    string = string + btn_value
+    screen_value.set(string)
+    get_point = True
 
 
 # Function to enter symbol by button
@@ -42,6 +57,7 @@ def operator_btn(operator):
     string = get_value()
     string = string + operator
     screen_value.set(string)
+    get_operator = True
 
 
 # Function to clear window by button
@@ -57,7 +73,8 @@ def key(event):
     kp = repr(event.char)
     if my_input == 9:
         # Exit when escape key is pressed
-        root.destroy()
+        # root.destroy() # It creates an error
+        exit()
     elif my_input == 119 or my_input == 22:
         # Delete last later when del key or backspace key is pressed
         new = string[:-1]
@@ -67,7 +84,10 @@ def key(event):
             string = new
     elif my_input == 36:
         # Calculate the result when enter key is pressed
-        result = eval(string)
+        try:
+            result = eval(string)
+        except:
+            result = string
         string = str(result)
     if kp[1] in numbers_list or kp[1] in operator_list:
         num = kp[1]
@@ -349,7 +369,7 @@ button18 = Button(root,
                   activeforeground=text,
                   padx=52,
                   pady=10,
-                  command=lambda: number_btn(".")
+                  command=point_btn
                   )
 
 button19 = Button(root,
