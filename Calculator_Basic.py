@@ -65,6 +65,18 @@ def clear_btn():
     screen_value.set("0")
 
 
+def m_plus():
+    string = get_value()
+    try:
+        if string[0] == "-":
+            string = string[1:]
+        else:
+            string = "-" + string
+    except IndexError:
+        pass
+    screen_value.set(string)
+
+
 # Function to get keypress
 def key(event):
     # Get the keypress
@@ -75,6 +87,14 @@ def key(event):
         # Exit when escape key is pressed
         # root.destroy() # It creates an error
         exit()
+    elif my_input == 49:
+        try:
+            if string[0] == "-":
+                string = string[1:]
+            else:
+                string = "-" + string
+        except IndexError:
+            pass
     elif my_input == 119 or my_input == 22:
         # Delete last later when del key or backspace key is pressed
         new = string[:-1]
@@ -145,7 +165,8 @@ button2 = Button(root,
                  activebackground=button_top_active,
                  activeforeground=text,
                  padx=38,
-                 pady=10
+                 pady=10,
+                 command=m_plus
                  )
 
 button3 = Button(root,
