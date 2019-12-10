@@ -73,7 +73,7 @@ def key(event):
     elif kp[1] in numbers_list or kp[1] in operator_list:
         num = kp[1]
     else:
-        num = "0"  # I think the Bug is here
+        num = "0"  # The Bug was here
     string = string + num
     screen_value.set(string)
 
