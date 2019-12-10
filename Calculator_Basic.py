@@ -15,6 +15,7 @@ screen_value.set(string_fill)
 def get_value():
     string = ""
     values = screen.get()
+
     for value in values:
         if value in numbers_list or value in operator_list:
             string = string + value
@@ -49,6 +50,31 @@ def clear_btn():
     screen_value.set("0")
 
 
+# Function to get keypress
+def key(event):
+    my_input = event.keycode
+    string = get_value()
+    kp = repr(event.char)
+    if my_input == 9:
+        root.destroy()
+    elif my_input == 119 or my_input == 22:
+        new = string[:-1]
+        if len(string) == 1 or len(string) == 0:
+            string = "0"
+        else:
+            string = new
+    elif my_input == 36:
+        string = get_value()
+        result = eval(string)
+        string = str(result)
+    if kp[1] in numbers_list or kp[1] in operator_list:
+        num = kp[1]
+    else:
+        num = ""
+    string = string + num
+    screen_value.set(string)
+
+
 # Window behaviour
 root.resizable(height=0, width=0)
 root.title("Rudransh's Calculator")
@@ -58,6 +84,10 @@ root.configure(background=background)
 screen = Entry(root,
                font=("cursive", 33, "bold"),
                background=display,
+               state='disabled',
+               cursor='arrow',
+               disabledbackground=display,
+               disabledforeground=text,
                fg=display_font,
                relief=SUNKEN,
                border=0,
@@ -384,5 +414,7 @@ button17.grid(columnspan=2, column=0, row=5)
 button18.grid(column=2, row=5)
 button19.grid(column=3, row=5)
 
+# Bind Keypress
+root.bind("<Key>", key)
 # Starting main gui window
 root.mainloop()
