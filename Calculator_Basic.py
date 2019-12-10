@@ -54,6 +54,7 @@ def key(event):
     # Get the keypress
     my_input = event.keycode
     string = get_value()  # get the existing value of screen
+    kp = repr(event.char)
     if my_input == 9:
         # Exit when escape key is pressed
         root.destroy()
