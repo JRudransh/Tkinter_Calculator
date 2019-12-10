@@ -70,10 +70,10 @@ def key(event):
         string = get_value()
         result = eval(string)
         string = str(result)
-    if kp[1] in numbers_list or kp[1] in operator_list:
+    elif kp[1] in numbers_list or kp[1] in operator_list:
         num = kp[1]
     else:
-        num = ""  # I think the Bug is here
+        num = "0"  # I think the Bug is here
     string = string + num
     screen_value.set(string)
 
