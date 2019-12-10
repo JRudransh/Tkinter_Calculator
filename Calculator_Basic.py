@@ -11,11 +11,10 @@ string_fill = "0"
 screen_value.set(string_fill)
 
 
-# Function for validation 1234
+# Function for validation
 def get_value():
     string = ""
     values = screen.get()
-
     for value in values:
         if value in numbers_list or value in operator_list:
             string = string + value
@@ -52,25 +51,28 @@ def clear_btn():
 
 # Function to get keypress
 def key(event):
+    # Get the keypress
     my_input = event.keycode
-    string = get_value()
-    kp = repr(event.char)
+    string = get_value()  # get the existing value of screen
     if my_input == 9:
+        # Exit when escape key is pressed
         root.destroy()
     elif my_input == 119 or my_input == 22:
+        # Delete last later when del key or backspace key is pressed
         new = string[:-1]
         if len(string) == 1 or len(string) == 0:
             string = "0"
         else:
             string = new
     elif my_input == 36:
+        # Calculate the result when enter key is pressed
         string = get_value()
         result = eval(string)
         string = str(result)
     if kp[1] in numbers_list or kp[1] in operator_list:
         num = kp[1]
     else:
-        num = ""
+        num = ""  # I think the Bug is here
     string = string + num
     screen_value.set(string)
 
