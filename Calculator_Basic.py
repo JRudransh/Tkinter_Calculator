@@ -103,7 +103,7 @@ def key(event):
             else:  # Value is positive
                 string = "-" + string
         except IndexError:
-            pass
+            pass  # To do nothing
     elif my_input == 119 or my_input == 22:
         # Delete last later when del key or backspace key is pressed
         new = string[:-1]
