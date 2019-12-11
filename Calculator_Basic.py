@@ -6,10 +6,10 @@ root = Tk()
 numbers_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e']
 operator_list = ['+', '-', '*', '**', '/', '//', '(', ')']
 dot_list = ['.']
-got_operator = True
+got_operator = False
 got_point = True
 screen_value = StringVar()
-string_fill = "0"
+string_fill = "Rudransh"
 screen_value.set(string_fill)
 
 
@@ -63,8 +63,8 @@ def operator_btn(operator):
     if got_operator:
         string = string + operator
         got_point = True
+        got_operator = False
     screen_value.set(string)
-    got_operator = False
 
 
 # Function to clear window by button
@@ -111,6 +111,8 @@ def key(event):
             string = "0"
         else:
             string = new
+            if string[-1] in operator_list:  # Multi oprator Bug Was here
+                got_operator = False
     elif my_input == 36:
         # Calculate the result when enter key is pressed
         try:
