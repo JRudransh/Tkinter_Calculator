@@ -109,10 +109,18 @@ def key(event):
         new = string[:-1]
         if len(string) == 1 or len(string) == 0:
             string = "0"
+            got_operator = False
         else:
             string = new
             if string[-1] in operator_list:  # Multi oprator Bug Was here
                 got_operator = False
+            else:
+                got_operator = True
+            if string[-1] in dot_list:
+                got_point = False
+            else:
+                got_point = True
+
     elif my_input == 36:
         # Calculate the result when enter key is pressed
         try:
@@ -136,6 +144,8 @@ def key(event):
             got_operator = False
             got_point = False
             string = string + num
+    if len(string) == 1 and string == "0":  # Whene the value is 0 you can,t input oprator
+        got_operator = False
     screen_value.set(string)
     # To handle the bug
     string = get_value()
