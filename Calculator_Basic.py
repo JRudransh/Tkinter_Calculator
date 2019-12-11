@@ -9,7 +9,7 @@ dot_list = ['.']
 got_operator = False
 got_point = True
 screen_value = StringVar()
-string_fill = "Rudransh"
+string_fill = "0"
 screen_value.set(string_fill)
 
 
