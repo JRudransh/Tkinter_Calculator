@@ -64,6 +64,10 @@ def operator_btn(operator):
         string = string + operator
         got_point = True
         got_operator = False
+    else:
+        string = string[:-1] + operator
+        got_point = True
+        got_operator = False
     screen_value.set(string)
 
 
@@ -133,11 +137,15 @@ def key(event):
         got_operator = True
         string = string + num
     elif kp[1] in operator_list:  # Check pressed key is in oprator list
-        if got_operator:  # Validation to get number
-            num = kp[1]
+        value_btn = kp[1]
+        if got_operator:  # Validation to get oprator
             got_operator = False
             got_point = True
-            string = string + num
+            string = string + value_btn
+        else:  # If oprator already typed it replace previous one
+            string = string[:-1] + value_btn
+            got_point = True
+            got_operator = False
     elif kp[1] in dot_list:  # Check pressed key is in oprator list
         if got_point:  # Validation to get number
             num = kp[1]
