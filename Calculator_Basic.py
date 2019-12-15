@@ -4,7 +4,7 @@ from colors import *
 root = Tk()
 # For validation
 numbers_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e']
-operator_list = ['+', '-', '*', '**', '/', '//', '(', ')']
+operator_list = ['+', '-', '*', '**', '(', ')', '÷']
 dot_list = ['.']
 got_operator = False
 got_point = True
@@ -27,7 +27,7 @@ def get_value():
 
 # Function to do calculation
 def calculate():
-    string = get_value()
+    string = get_value().replace('÷', '/')  # Changed the ÷ symbol before devide
     try:
         result = eval(string)
     except:
@@ -220,7 +220,7 @@ button3 = Button(root,
                  activeforeground=symbol_font,
                  padx=50,
                  pady=10,
-                 command=lambda: operator_btn("/")
+                 command=lambda: operator_btn("÷")
                  )
 
 button4 = Button(root,
