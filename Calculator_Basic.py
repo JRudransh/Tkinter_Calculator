@@ -1,33 +1,16 @@
 from tkinter import *
 from colors import *
+from functions import *
 # creating main object
 root = Tk()
 # For validation
-numbers_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e']
-operator_list = ['+', '-', '*', '**', '(', ')', '÷']
-dot_list = ['.']
-got_operator = False
-got_point = True
 screen_value = StringVar()
-string_fill = "0"
 screen_value.set(string_fill)
-
-
-# Function for validation
-def get_value():
-    string = ""
-    values = screen.get()
-    for value in values:
-        if value in numbers_list or value in operator_list or value in dot_list:
-            string = string + value
-    if values == '0':
-        string = ""
-    return string
 
 
 # Function to do calculation
 def calculate():
-    string = get_value().replace('÷', '/')  # Changed the ÷ symbol before devide
+    string = get_value(screen.get()).replace('÷', '/')  # Changed the ÷ symbol before devide
     try:
         result = eval(string)
     except:
@@ -38,7 +21,7 @@ def calculate():
 # Function to enter number by button
 def number_btn(num):
     global got_operator, got_point
-    string = get_value()
+    string = get_value(screen.get())
     string = string + num
     screen_value.set(string)
     got_operator = True
@@ -47,7 +30,7 @@ def number_btn(num):
 # Function to enter number by button
 def point_btn():
     global got_operator, got_point
-    string = get_value()
+    string = get_value(screen.get())
     if got_point:
         btn_value = '.'
         string = string + btn_value
@@ -59,7 +42,7 @@ def point_btn():
 # Function to enter symbol by button
 def operator_btn(operator):
     global got_operator, got_point
-    string = get_value()
+    string = get_value(screen.get())
     if got_operator:
         string = string + operator
         got_point = True
@@ -78,7 +61,7 @@ def clear_btn():
 
 
 def m_plus():
-    string = get_value()
+    string = get_value(screen.get())
     try:
         if string[0] == "-":
             string = string[1:]
@@ -94,7 +77,7 @@ def key(event):
     global got_operator, got_point
     # Get the keypress
     my_input = event.keycode
-    string = get_value()  # get the existing value of screen
+    string = get_value(screen.get())  # get the existing value of screen
     kp = repr(event.char)
     if my_input == 9:
         # Exit when escape key is pressed
@@ -156,7 +139,7 @@ def key(event):
         got_operator = False
     screen_value.set(string)
     # To handle the bug
-    string = get_value()
+    string = get_value(screen.get())
     if string == "":
         screen_value.set("0")
 
