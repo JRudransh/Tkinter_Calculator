@@ -16,3 +16,16 @@ def get_value(values):
     if values == '0':
         string = ""
     return string
+
+
+def arrange(unarrangeed_string):
+    new_str = ""
+    count = 0
+    point_str = unarrangeed_string.split()[1]
+    if len(point_str) > 2:
+        for i in point_str:
+            if count > 2:
+                new_str = new_str + i
+                count += 1
+    elif point_str == "0" or point_str == "00":
+        new_str = int(unarrangeed_string)
