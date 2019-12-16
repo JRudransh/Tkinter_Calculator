@@ -6,13 +6,16 @@ root = Tk()
 # For validation
 screen_value = StringVar()
 screen_value.set(string_fill)
+got_result = False
 
 
 # Function to do calculation
 def calculate():
+    global got_result
     string = get_value(screen.get()).replace('÷', '/')  # Changed the ÷ symbol before devide
     try:
         result = eval(string)
+        got_result = True
     except:
         result = string
     screen_value.set(result)
@@ -20,16 +23,21 @@ def calculate():
 
 # Function to enter number by button
 def number_btn(num):
-    global got_operator, got_point
+    global got_operator, got_point, got_result
     string = get_value(screen.get())
-    string = string + num
+    if got_result:  # When we calculate result it clear the value and set new input value
+        string = num
+        got_result = False
+    else:
+        string = string + num
     screen_value.set(string)
     got_operator = True
 
 
 # Function to enter number by button
 def point_btn():
-    global got_operator, got_point
+    global got_operator, got_point, got_result
+    got_result = False
     string = get_value(screen.get())
     if got_point:
         btn_value = '.'
@@ -41,16 +49,20 @@ def point_btn():
 
 # Function to enter symbol by button
 def operator_btn(operator):
-    global got_operator, got_point
+    global got_operator, got_point, got_result
+    got_result = False
     string = get_value(screen.get())
     if got_operator:
         string = string + operator
         got_point = True
         got_operator = False
     else:
-        string = string[:-1] + operator
-        got_point = True
-        got_operator = False
+        if string == '0' or string == '':
+            string = '0'
+        else:
+            string = string[:-1] + operator
+            got_point = True
+            got_operator = False
     screen_value.set(string)
 
 
@@ -126,9 +138,12 @@ def key(event):
             got_point = True
             string = string + value_btn
         else:  # If oprator already typed it replace previous one
-            string = string[:-1] + value_btn
-            got_point = True
-            got_operator = False
+            if string == '0' or string == '':
+                string = '0'
+            else:
+                string = string[:-1] + operator
+                got_point = True
+                got_operator = False
     elif kp[1] in dot_list:  # Check pressed key is in oprator list
         if got_point:  # Validation to get number
             num = kp[1]

@@ -1,5 +1,5 @@
 numbers_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'e']
-operator_list = ['+', '-', '*', '**', '(', ')', '÷']
+operator_list = ['+', '-', '*', '**', '(', ')', '÷', '/']
 dot_list = ['.']
 got_operator = False
 got_point = True
