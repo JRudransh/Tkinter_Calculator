@@ -95,7 +95,7 @@ def m_plus():
 
 # Function to get keypress
 def key(event):
-    global got_operator, got_point
+    global got_operator, got_point, got_result
     # Get the keypress
     my_input = event.keycode
     string = get_value(screen.get())  # get the existing value of screen
