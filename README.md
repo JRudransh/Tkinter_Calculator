@@ -18,7 +18,7 @@
 2.  Go inside the file where `Tkinter_Calculator`
 3.  Run the command `python3 Calculator_Basic.py`
 
-### Note:
+### Note
 
 1.  Make Sure that you have installed tkinter module before running the programme
 
