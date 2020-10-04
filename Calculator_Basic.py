@@ -1,7 +1,7 @@
 from tkinter import Tk, StringVar, Entry, SUNKEN, Button, RAISED
-from colors import (background, display, display_font, button_active, 
-                    button_top_active, button_equal, text, clear, 
-                    clear_active, button, button_top, symbol, 
+from colors import (background, display, display_font, button_active,
+                    button_top_active, button_equal, text, clear,
+                    clear_active, button, button_top, symbol,
                     symbol_font, symbol_active, equal)
 from functions import string_fill, get_value, operator_list, dot_list, numbers_list
 # creating main object
@@ -10,7 +10,7 @@ root = Tk()
 screen_value = StringVar()
 screen_value.set(string_fill)
 got_result = False
-
+got_point = False
 
 # Function to do calculation
 def calculate():
