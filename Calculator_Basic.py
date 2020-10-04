@@ -132,8 +132,12 @@ def key(event):
     elif my_input == 36:
         # Calculate the result when enter key is pressed
         try:
-            result = eval(string)
-        except:
+            result = literal_eval(string)
+            got_result = True
+        except ZeroDivisionError:
+            result = string
+        except Exception as e:
+            print(e)
             result = string
         string = str(result)
     if kp[1] in numbers_list:  # Check pressed key is in number list
