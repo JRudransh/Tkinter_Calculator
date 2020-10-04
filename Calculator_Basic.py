@@ -4,6 +4,7 @@ from colors import (background, display, display_font, button_active,
                     clear_active, button, button_top, symbol,
                     symbol_font, symbol_active, equal)
 from functions import string_fill, get_value, operator_list, dot_list, numbers_list
+from ast import literal_eval
 # creating main object
 root = Tk()
 # For validation
@@ -11,15 +12,19 @@ screen_value = StringVar()
 screen_value.set(string_fill)
 got_result = False
 got_point = False
+got_operator = False
 
 # Function to do calculation
 def calculate():
     global got_result
     string = get_value(screen.get()).replace('÷', '/')  # Changed the ÷ symbol before devide
     try:
-        result = eval(string)
+        result = literal_eval(string)
         got_result = True
-    except:
+    except ZeroDivisionError:
+        result = string
+    except Exception as e:
+        print(e)
         result = string
     screen_value.set(result)
 
