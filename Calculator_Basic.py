@@ -1,6 +1,9 @@
-from tkinter import *
-from colors import *
-from functions import *
+from tkinter import Tk, StringVar, Entry, SUNKEN, Button, RAISED
+from colors import (background, display, display_font, button_active, 
+                    button_top_active, button_equal, text, clear, 
+                    clear_active, button, button_top, symbol, 
+                    symbol_font, symbol_active, equal)
+from functions import string_fill, get_value, operator_list, dot_list, numbers_list
 # creating main object
 root = Tk()
 # For validation
@@ -68,6 +71,7 @@ def operator_btn(operator):
 
 # Function to clear window by button
 def clear_btn():
+    global got_point
     screen_value.set("0")
     got_point = True
 
@@ -141,7 +145,8 @@ def key(event):
             if string == '0' or string == '':
                 string = '0'
             else:
-                string = string[:-1] + operator
+                if string[-1] in operator_list and string[-2] in operator_list:
+                    string = string[:-3] + string[-1]
                 got_point = True
                 got_operator = False
     elif kp[1] in dot_list:  # Check pressed key is in oprator list
