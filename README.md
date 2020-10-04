@@ -1,5 +1,7 @@
 # Tkinter Calculator
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/eb167ba4f1c6428f849f5ac00b770314)](https://www.codacy.com/gh/JRudransh/Tkinter_Calculator/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JRudransh/Tkinter_Calculator&amp;utm_campaign=Badge_Grade)
+
 ## Simple GUI programming for Calculator with tkinter
 
 ### Basic Calculator is completed. Simpaly download the files
